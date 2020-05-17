@@ -13,11 +13,17 @@ body {
     margin-top: 40px;
     border: 1px solid #b3b3b3;
   }
-  
+  .form{
+    display: flex;
+    flex-direction: row;
+  }
+  .btn_style{
+    width: 120px;
+  }
   input {
     border: none;
     display: block;
-    width: 98.4%;
+    width: 78.4%;
     line-height: 1.5;
     padding: 8px 0 8px 10px;
     border-bottom: 1px solid #3a3737;

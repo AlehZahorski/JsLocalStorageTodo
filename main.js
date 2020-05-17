@@ -1,36 +1,33 @@
 const list = document.querySelector('#list');
-const form = document.querySelector('form');
 const item = document.querySelector('#item');
-
+const btn = document.querySelector('button');
 
 function store() {
     window.localStorage.myitems = list.innerHTML;
 }
 
 
-const start = () =>{
-    
-form.addEventListener('submit',function(e){
-    e.preventDefault();
-    list.innerHTML += `<li> ${item.value} </li>`;
-    store();
-    item.value = "";
-},
-false)
-    
-list.addEventListener('click',function(e){
-    var t = e.target;
-    if(t.classList.contains('checked')){
-        t.parentNode.removeChild(t);
-    } else {
-        t.classList.add('checked');
-    }
-      store();
-    },
-    false)
+const addTask = (e) =>{
+  if(item.value === '' || item.value.charAt(0) === ' '){
+    alert('Write at least something, don\'t be lazy');
+    item.value = '';
+  }else{
+  e.preventDefault();
+  list.innerHTML += `<li> ${item.value} </li>`;
+  store();
+  item.value = "";
+  }
 }
-    
 
+const RemoveTask = (e) =>{
+  var t = e.target;
+  if(t.classList.contains('checked')){
+      t.parentNode.removeChild(t);
+  } else {
+      t.classList.add('checked');
+  }
+  store();
+}
 
 const getValues = () => {
     let storedValues = window.localStorage.myitems;
@@ -41,8 +38,7 @@ const getValues = () => {
       list.innerHTML = storedValues;
     }
 }
-
-
-
 getValues();
-start();
+
+btn.addEventListener('click', addTask);
+list.addEventListener('click', RemoveTask)
