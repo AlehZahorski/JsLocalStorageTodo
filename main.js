@@ -20,11 +20,11 @@ const addTask = (e) =>{
 }
 
 const RemoveTask = (e) =>{
-  var t = e.target;
-  if(t.classList.contains('checked')){
-      t.parentNode.removeChild(t);
+  let event = e.target;
+  if(event.classList.contains('checked')){
+      event.parentNode.removeChild(t);
   } else {
-      t.classList.add('checked');
+      event.classList.add('checked');
   }
   store();
 }
